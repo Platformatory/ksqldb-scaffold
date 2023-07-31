@@ -113,6 +113,8 @@ SELECT a, formula(b, c) AS result FROM s1 EMIT CHANGES;
 |k3                                                        |59                                                        |
 ```
 
-# TODO
+5. To run Junit tests,
 
-1. write junit tests
+```sh
+$ gradle clean test
+```

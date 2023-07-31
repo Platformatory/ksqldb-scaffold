@@ -7,6 +7,7 @@ buildscript {
 plugins {
     id "java"
     id "com.github.johnrengelman.shadow" version "6.0.0"
+    id "com.adarshr.test-logger" version "3.2.0"
 }
 
 sourceCompatibility = "1.8"
@@ -26,6 +27,8 @@ dependencies {
     implementation "io.confluent.ksql:ksqldb-udf:7.4.0"
     implementation "org.apache.kafka:kafka_2.13:2.5.0"
     implementation "org.apache.kafka:connect-api:2.5.0"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'    
 }
 
 apply plugin: "com.github.johnrengelman.shadow"
@@ -39,4 +42,8 @@ shadowJar {
     archiveBaseName = "example-udfs"
     archiveClassifier = ""
     destinationDirectory = file("extensions")
+}
+
+test {
+    useJUnitPlatform()
 }
